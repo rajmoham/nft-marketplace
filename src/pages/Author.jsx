@@ -9,7 +9,7 @@ import Skeleton from "../components/UI/Skeleton";
 const Author = () => {
   const {id} = useParams()
 
-  const [authorData, setAuthorData] = useState({})
+  const [authorData, setAuthorData] = useState([])
   const [following, setFollowing] = useState(false)
 
   async function fetchData() {
@@ -18,6 +18,7 @@ const Author = () => {
   }
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     fetchData()
   }, [])
 
@@ -32,7 +33,7 @@ const Author = () => {
     const followersCount = authorData.followers
     setAuthorData({...authorData, followers: followersCount - 1})
   }
-  
+
   return (
     <div id="wrapper">
       <div className="no-bottom no-top" id="content">
@@ -45,7 +46,7 @@ const Author = () => {
             style={{ background: `url(${AuthorBanner}) top` }}
           ></section>
         {
-          authorData
+          authorData.id
           ?
           <section aria-label="section">
             <div className="container">

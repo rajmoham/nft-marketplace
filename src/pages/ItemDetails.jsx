@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import EthImage from "../images/ethereum.svg";
 import { Link, useParams } from "react-router-dom";
-import AuthorImage from "../images/author_thumbnail.jpg";
-import nftImage from "../images/nftImage.jpg";
 import { useState } from "react";
 import axios from "axios";
 import Skeleton from "../components/UI/Skeleton";
@@ -27,7 +25,7 @@ const ItemDetails = () => {
       <div className="no-bottom no-top" id="content">
         <div id="top"></div>
         {
-          nftData
+          nftData.id
             ?
             <section aria-label="section" className="mt90 sm-mt-0">
               <div className="container">

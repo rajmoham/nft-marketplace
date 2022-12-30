@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 function Countdown({item}) {    
     const [timeNow, setTimeNow] = useState(Date.now());
 
-    const [secs, setSecs] = useState(0)
-    const [mins, setMins] = useState(0)
-    const [hours, setHours] = useState(0)
+    const [hours, setHours] = useState(Math.floor((item.expiryDate - timeNow) / 1000 / 3600))
+    const [mins, setMins] = useState(Math.floor((item.expiryDate - timeNow) / 1000 % 3600 / 60))
+    const [secs, setSecs] = useState(Math.floor((item.expiryDate - timeNow) / 1000 % 60))
 
     function displayCount() {
         const secsRemaining = Math.floor((item.expiryDate - timeNow) / 1000)
@@ -24,9 +24,10 @@ function Countdown({item}) {
     return (
         <div className="de_countdown">
             {
-                secs > 0 && mins > 0 && hours > 0
+                item.expiryDate - timeNow > 0
                 &&
-                `${hours}h ${mins}m ${secs}s`}
+                `${hours}h ${mins}m ${secs}s`
+            }
         </div>
     )
 }
